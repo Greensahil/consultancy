@@ -1,0 +1,156 @@
+<% include ./partials/header.ejs %>
+
+<!--Navabar-->
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">US VISA Interview Tips</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link text-white" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+        <!--Carousal-->
+
+    
+    
+    
+    
+<!--Header-->
+
+ <div class="container-fluid bg-overlay">
+	<div class="text-center">
+		<h1>UVIT</h1>
+        <button type="button" class="btn btn-primary btn-lg">Get Started</button>
+	</div>
+</div>
+    
+
+<header class="jumbotron">
+     <div class="container" id="uvit">
+         <h4>What we do at UVIT</h4>
+         <p>
+          Our Prime objective is to help you meet yours goals by providing you the following tools
+          
+          </p>
+     </div>
+ </header>
+
+
+<div class="row">
+	<div class="container">
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class=" w-100 img-fluid" src="https://i.imgur.com/GYgOEyN.jpg" alt="First slide">
+					<div class="carousel-caption d-none d-md-block">
+						<button class="btn btn-hero btn-lg" role="button">Blogs</button>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img class=" w-100" src="https://i.imgur.com/RgqlpVL.jpg" alt="Second slide">
+					<div class="carousel-caption d-none d-md-block">
+						<button class="btn btn-hero btn-lg" role="button">Sign up</button>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img class="w-100" src="https://i.imgur.com/0aabvmF.jpg" alt="Third slide">
+					<div class="carousel-caption d-none d-md-block">
+						<button class="btn btn-hero btn-lg" role="button">About us</button>
+					</div>
+				</div>
+			</div>
+			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+</div>
+
+
+<hr>
+
+<!--BLOG POSTS-->
+
+<div class="container blogs">
+	<div class="col-md-12">
+	    <h1>Blogs</h1>
+		<h2>5 basic tips for Interview</h2>
+		<p>
+			'You ought to be ashamed of yourself for asking such a simple question,' added the Gryphon; and then they both sat silent and looked at poor Alice, who felt ready to sink into the earth. At last the Gryphon said to the Mock Turtle, 'Drive on, old fellow! Don't be all day about it!' and he went on in these words: 'Yes, we went to school in the sea, though you mayn't believe it—' 'I never said I didn't!' interrupted Alice. 'You did,' said the Mock Turtle.
+		</p>
+		<div>
+			<span class="badge">Posted 2012-08-02 20:47:04</span>
+			<div class="pull-right">
+				<span class="label label-default">alice</span><span class="label label-primary">story</span><span class="label label-success">blog</span><span class="label label-info">personal</span><span class="label label-warning">Warning</span>
+				<span class="label label-danger">Danger</span>
+			</div>
+		</div>
+		<hr>
+		<h2>VISA guides</h2>
+		<p>
+			'I am bound to Tahiti for more men.' 'Very good. Let me board you a moment—I come in peace.' With that he leaped from the canoe, swam to the boat; and climbing the gunwale, stood face to face with the captain. 'Cross your arms, sir; throw back your head. Now, repeat after me. As soon as Steelkilt leaves me, I swear to beach this boat on yonder island, and remain there six days. If I do not, may lightning strike me!'A pretty scholar,' laughed the Lakeman. 'Adios, Senor!' and leaping into the sea, he swam back to his comrades.
+		</p>
+		<div>
+			<span class="badge">Posted 2012-08-02 20:47:04</span>
+			<div class="pull-right">
+				<span class="label label-default">alice</span><span class="label label-primary">story</span><span class="label label-success">blog</span><span class="label label-info">personal</span><span class="label label-warning">Warning</span>
+				<span class="label label-danger">Danger</span>
+			</div>
+		</div>
+		<hr>
+	</div>
+</div>
+
+<div class="container">
+	<% blogs.forEach(function(blog){ %>
+	
+	<p> Change format Ruz<</p>
+            <div class="col-md-3 col-sm-6">
+            	<div class="caption">
+                       <h4><%= blog.name %></h4>
+                   </div>
+                <div class="thumbnail">
+                   <img src="<%= blog.image %>">
+                   
+                   <p><%=blog.description %></p>
+                   <p>
+                       <a href="/blogs/<%= blog._id %>" class="btn btn-primary">More Info</a>
+                   </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+        
