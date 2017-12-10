@@ -8,7 +8,8 @@ app.set('view engine','ejs');
 // mongoose.connect("mongodb://localhost/usvisa");
 
 mongoose.connect("mongodb://sahilgreen:Sahil12345@ds133876.mlab.com:33876/consultancy",{useMongoClient: true})
-
+var url = process.env.DATABASEURL || "mongodb://localhost/consultancy";
+mongoose.connect(url);
 
 
 
