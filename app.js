@@ -4,6 +4,7 @@ var express= require('express'),
     LocalStrategy=require('passport-local'),
     mongoose=require("mongoose"),
     bodyParser= require('body-parser'),
+    Blog     = require('./models/blog'),
     User        = require("./models/user");
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -14,15 +15,6 @@ mongoose.connect(url);
 
 
 
-// database
-// Mongoose/Model Config
-var blogSchema= new mongoose.Schema({
-    name:String,
-    image:String,
-    description:String,
-    created:{type:Date,default:Date.now}
-});
-var Blog=mongoose.model("Blog",blogSchema);
 
 
 // PASSPORT CONFIGURATION
