@@ -5,10 +5,12 @@ var express= require('express'),
     mongoose=require("mongoose"),
     bodyParser= require('body-parser'),
     Blog     = require('./models/blog'),
-    User        = require("./models/user");
+    User        = require("./models/user"),
+    seedDB    =require("./seeds");
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');
+seedDB();
 
 var url = process.env.DATABASEURL || "mongodb://localhost/consultancy";
 mongoose.connect(url);
