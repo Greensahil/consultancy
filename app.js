@@ -119,7 +119,7 @@ app.post("/register", function(req, res){
             return res.render("register");
         }
         passport.authenticate("local")(req, res, function(){
-           res.redirect("/campgrounds"); 
+           res.redirect("/blogs"); 
         });
     });
 });
@@ -131,7 +131,7 @@ app.get("/login", function(req, res){
 // handling login logic
 app.post("/login", passport.authenticate("local", 
     {
-        successRedirect: "/campgrounds",
+        successRedirect: "/blogs",
         failureRedirect: "/login"
     }), function(req, res){
 });
