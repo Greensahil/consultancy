@@ -7,6 +7,7 @@ var express= require('express'),
     Blog     = require('./models/blog'),
     User        = require("./models/user"),
     seedDB    =require("./seeds");
+    
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');
@@ -84,17 +85,33 @@ app.get("/blogs/new",function(req,res){
 });
 
 // SHOW - shows more info about one campground
+// app.get("/blogs/:id", function(req, res){
+//     //find the campground with provided ID
+//     Blog.findById(req.params.id).populate("comments").exec(function(err, foundBlog){
+//         if(err){
+//             console.log(err);
+//         } else {
+//             console.log('foundBlog')
+//             //render show template with that campground
+//             res.render("show", {blog: foundBlog});
+//         }
+//     });
+// });
+
 app.get("/blogs/:id", function(req, res){
-    //find the campground with provided ID
-    Blog.findById(req.params.id, function(err, foundBlog){
+    //find the blog with provided ID
+    Blog.findById(req.params.id).populate("comments").exec(function(err, foundBlog){
         if(err){
             console.log(err);
         } else {
-            //render show template with that campground
+            console.log(foundBlog)
+            //render show template with that blog
             res.render("show", {blog: foundBlog});
         }
     });
 })
+
+
 
 //  ===========
 // AUTH ROUTES

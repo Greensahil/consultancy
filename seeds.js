@@ -4,17 +4,17 @@ var Comment   = require("./models/comment");
 
 var data = [
     {
-        name: "Cloud's Rest", 
+        name: "5 basic tips for interview", 
         image: "https://farm4.staticflickr.com/3795/10131087094_c1c0a1c859.jpg",
         description: "blah blah blah"
     },
     {
-        name: "Desert Mesa", 
+        name: "Interview", 
         image: "https://farm4.staticflickr.com/3859/15123592300_6eecab209b.jpg",
         description: "blah blah blah"
     },
     {
-        name: "Canyon Floor", 
+        name: "Interview location", 
         image: "https://farm1.staticflickr.com/189/493046463_841a18169e.jpg",
         description: "blah blah blah"
     }
@@ -29,7 +29,7 @@ function seedDB(){
         console.log("removed campgrounds!");
          //add a few campgrounds
         data.forEach(function(seed){
-            Blog.create(seed, function(err, campground){
+            Blog.create(seed, function(err, blog){
                 if(err){
                     console.log(err)
                 } else {
@@ -37,14 +37,14 @@ function seedDB(){
                     //create a comment
                     Comment.create(
                         {
-                            text: "This place is great, but I wish there was internet",
+                            text: "I love this website",
                             author: "Homer"
                         }, function(err, comment){
                             if(err){
                                 console.log(err);
                             } else {
-                                campground.comments.push(comment);
-                                campground.save();
+                                blog.comments.push(comment);
+                                blog.save();
                                 console.log("Created new comment");
                             }
                         });
