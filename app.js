@@ -74,7 +74,7 @@ app.get("/blogs", function(req, res){
        if(err){
            console.log(err);
        } else {
-          res.render("index",{blogs:blogs});
+          res.render("blogs/index",{blogs:blogs});
        }
     });
 });
@@ -106,7 +106,7 @@ app.get("/blogs/:id", function(req, res){
         } else {
             console.log(foundBlog)
             //render show template with that blog
-            res.render("show", {blog: foundBlog});
+            res.render("blogs/show", {blog: foundBlog});
         }
     });
 })
@@ -119,7 +119,7 @@ app.get("/blogs/:id", function(req, res){
 
 // show register form
 app.get("/register", function(req, res){
-   res.render("register"); 
+   res.render("blogs/register"); 
 });
 //handle sign up logic
 app.post("/register", function(req, res){
@@ -127,7 +127,7 @@ app.post("/register", function(req, res){
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err);
-            return res.render("register");
+            return res.render("blog/register");
         }
         passport.authenticate("local")(req, res, function(){
            res.redirect("/blogs"); 
@@ -137,7 +137,7 @@ app.post("/register", function(req, res){
 
 // show login form
 app.get("/login", function(req, res){
-   res.render("login"); 
+   res.render("blogs/login"); 
 });
 // handling login logic
 app.post("/login", passport.authenticate("local", 
@@ -159,6 +159,35 @@ function isLoggedIn(req, res, next){
     }
     res.redirect("/login");
 }
+
+
+// ====================
+// COMMENTS ROUTES
+// ====================
+
+
+app.get("/campgrounds/:id/comments/new", function(req, res){
+    // find campground by id
+    Campground.findById(req.params.id, function(err, campground){
+        if(err){
+            console.log(err);
+        } else {
+             res.render("comments/new", {campground: campground});
+        }
+    })
+});
+app.get("/blogs/:id/comments/new",function(req,res){
+    Blog.findById(req.params.id,function(err,blog){
+        if(err){
+            console.log(err)
+        }else
+        res.render("comments/new",{blog:blog})
+    })
+})
+
+
+
+
 
 
 app.listen(process.env.PORT, process.env.IP, function(){
