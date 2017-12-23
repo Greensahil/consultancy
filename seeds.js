@@ -6,17 +6,17 @@ var data = [
     {
         name: "5 basic tips for interview", 
         image: "https://farm4.staticflickr.com/3795/10131087094_c1c0a1c859.jpg",
-        description: "blah blah blah"
+        description: "The most common question that arises in the minds of the ones who are preparing for their US visa interviews is, How should I prepare myself for the interview and what are the things I need to know?One of the important steps in the process of applying for a US visa is the visa interview. Visa applicants need to be aware of a few things in order to successfully get through these interviews."
     },
     {
         name: "Interview", 
         image: "https://farm4.staticflickr.com/3859/15123592300_6eecab209b.jpg",
-        description: "blah blah blah"
+        description: "The most common question that arises in the minds of the ones who are preparing for their US visa interviews is, How should I prepare myself for the interview and what are the things I need to know?One of the important steps in the process of applying for a US visa is the visa interview. Visa applicants need to be aware of a few things in order to successfully get through these interviews."
     },
     {
         name: "Interview location", 
         image: "https://farm1.staticflickr.com/189/493046463_841a18169e.jpg",
-        description: "blah blah blah"
+        description: "The most common question that arises in the minds of the ones who are preparing for their US visa interviews is, How should I prepare myself for the interview and what are the things I need to know?One of the important steps in the process of applying for a US visa is the visa interview. Visa applicants need to be aware of a few things in order to successfully get through these interviews."
     }
 ]
 
