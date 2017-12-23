@@ -12,6 +12,7 @@ var express         =   require('express'),
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');
+app.use(express.static(__dirname + "/public"));
 seedDB();
 
 var url = process.env.DATABASEURL || "mongodb://localhost/consultancy";
