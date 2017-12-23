@@ -127,7 +127,7 @@ app.post("/register", function(req, res){
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err);
-            return res.render("blog/register");
+            return res.render("blogs/register");
         }
         passport.authenticate("local")(req, res, function(){
            res.redirect("/blogs"); 
@@ -161,29 +161,19 @@ function isLoggedIn(req, res, next){
 }
 
 
-// ====================
+
 // COMMENTS ROUTES
-// ====================
 
 
-app.get("/campgrounds/:id/comments/new", function(req, res){
-    // find campground by id
-    Campground.findById(req.params.id, function(err, campground){
-        if(err){
-            console.log(err);
-        } else {
-             res.render("comments/new", {campground: campground});
-        }
-    })
-});
+
 app.get("/blogs/:id/comments/new",function(req,res){
     Blog.findById(req.params.id,function(err,blog){
         if(err){
-            console.log(err)
+            console.log(err);
         }else
-        res.render("comments/new",{blog:blog})
-    })
-})
+        res.render("comments/new",{blog:blog});
+    });
+});
 
 
 
