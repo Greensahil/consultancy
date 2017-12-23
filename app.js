@@ -1,12 +1,13 @@
-var express= require('express'),
-    app=   express(),
-    passport=require('passport'),
-    LocalStrategy=require('passport-local'),
-    mongoose=require("mongoose"),
-    bodyParser= require('body-parser'),
-    Blog     = require('./models/blog'),
-    User        = require("./models/user"),
-    seedDB    =require("./seeds");
+var express         =   require('express'),
+    app             =   express(),
+    passport        =   require('passport'),
+    LocalStrategy   =   require('passport-local'),
+    mongoose        =   require("mongoose"),
+    bodyParser      =   require('body-parser'),
+    Blog            =   require('./models/blog'),
+    User            =   require("./models/user"),
+    Comment         =   require("./models/comment"),
+    seedDB          =   require("./seeds");
     
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -69,7 +70,7 @@ app.post("/blogs", function(req, res){
 
 //INDEX - show all blogs
 app.get("/blogs", function(req, res){
-    // Get all campgrounds from DB
+    // Get all blogs from DB
     Blog.find({}, function(err, blogs){
        if(err){
            console.log(err);
@@ -84,15 +85,15 @@ app.get("/blogs/new",function(req,res){
 
 });
 
-// SHOW - shows more info about one campground
+// SHOW - shows more info about one blog
 // app.get("/blogs/:id", function(req, res){
-//     //find the campground with provided ID
+//     //find the blog with provided ID
 //     Blog.findById(req.params.id).populate("comments").exec(function(err, foundBlog){
 //         if(err){
 //             console.log(err);
 //         } else {
 //             console.log('foundBlog')
-//             //render show template with that campground
+//             //render show template with that blog
 //             res.render("show", {blog: foundBlog});
 //         }
 //     });
@@ -175,6 +176,31 @@ app.get("/blogs/:id/comments/new",function(req,res){
     });
 });
 
+
+
+
+app.post("/blogs/:id/comments", function(req, res){
+   //lookup blog using ID
+   Blog.findById(req.params.id, function(err, blog){
+       if(err){
+           console.log(err);
+           res.redirect("/blogs");
+       } else {
+        Comment.create(req.body.comment, function(err, comment){
+           if(err){
+               console.log(err);
+           } else {
+               blog.comments.push(comment);
+               blog.save();
+               res.redirect('/blogs/' + blog._id);
+           }
+        });
+       }
+   });
+ 
+});
+    
+    
 
 
 
