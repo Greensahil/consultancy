@@ -41,6 +41,11 @@ body {
 	border-color:#FFFFFF;
 	padding-bottom:0px;
 }
+
+.nav-username{
+    text-transform:capitalize;
+}
+
 .bg-overlay {
 	background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url("https://unsplash.imgix.net/photo-1416339442236-8ceb164046f8?q=75&fm=jpg&s=8eb83df8a744544977722717b1ea4d09");
 	background-repeat:no-repeat;
@@ -129,9 +134,6 @@ p{
                     <li class="nav-item active">
                         <a class="nav-link text-white" href="#">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">About Us</a>
-                    </li>
                     <% if(!currentUser) { %>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="/login">Login</a>
@@ -141,6 +143,9 @@ p{
                     </li>
                     <% } else { %>
                     <li class="nav-item">
+                        <a class="nav-link text-white nav-username" href="#"><%=currentUser.username %></a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-white" href="/logout">Logout</a>
                     </li>
                     <% } %>
@@ -148,7 +153,6 @@ p{
             </div>
         </div>
     </nav>
-    
     
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
