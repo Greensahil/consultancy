@@ -1,9 +1,7 @@
-
 var express=require("express");
-var router=expressRouter();
-// router.get('/blogs',function(req,res){
-//     res.render('index.ejs');
-// });
+var router=express.Router();
+var Blog=require("../models/blog");
+
 
 //INDEX - show all blogs
 router.get("/blogs", function(req, res){
@@ -64,7 +62,7 @@ router.get("/blogs/:id",function(req, res){
         if(err){
             console.log(err);
         } else {
-            console.log(foundBlog)
+            console.log(foundBlog);
             //render show template with that blog
             res.render("blogs/show", {blog: foundBlog});
         }

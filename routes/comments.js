@@ -1,8 +1,11 @@
+var express=require("express");
+var router=express.Router();
+var Blog=require("../models/blog");
+var Comment=require("../models/comment");
+
+
 // COMMENTS ROUTES
-
-
-
-app.get("/blogs/:id/comments/new",isLoggedIn,function(req,res){
+router.get("/blogs/:id/comments/new",isLoggedIn,function(req,res){
     Blog.findById(req.params.id,function(err,blog){
         if(err){
             console.log(err);
@@ -14,7 +17,7 @@ app.get("/blogs/:id/comments/new",isLoggedIn,function(req,res){
 
 
 
-app.post("/blogs/:id/comments",isLoggedIn,function(req, res){
+router.post("/blogs/:id/comments",isLoggedIn,function(req, res){
    //lookup blog using ID
    Blog.findById(req.params.id, function(err, blog){
        if(err){
@@ -34,4 +37,13 @@ app.post("/blogs/:id/comments",isLoggedIn,function(req, res){
    });
  
 });
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
     
+
+module.exports= router;

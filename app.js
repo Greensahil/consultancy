@@ -8,8 +8,8 @@ var express         =   require('express'),
     User            =   require("./models/user"),
     Comment         =   require("./models/comment"),
     seedDB          =   require("./seeds"),
-    blogRoutes      =   require("./routes/blog"),
-    commentRoutes   =   require("./routes/comment"),
+    blogRoutes      =   require("./routes/blogs"),
+    commentRoutes   =   require("./routes/comments"),
     indexRoutes      =  require("./routes/index");
     
 
@@ -49,10 +49,6 @@ app.use(blogRoutes);
 app.use(commentRoutes);
 
 
-
-
-
-    
 
 
 

@@ -1,14 +1,19 @@
+var express=require("express");
+var router=express.Router();
+var User=require("../models/user");
+var passport=require("passport");
 
-app.get('/',function(req,res){
+
+router.get('/',function(req,res){
     res.redirect('/blogs')
 })
 
 // show register form
-app.get("/register", function(req, res){
+router.get("/register", function(req, res){
    res.render("blogs/register"); 
 });
 //handle sign up logic
-app.post("/register", function(req, res){
+router.post("/register", function(req, res){
     var newUser = new User({username: req.body.username});
     User.register(newUser, req.body.password, function(err, user){
         if(err){
@@ -22,11 +27,11 @@ app.post("/register", function(req, res){
 });
 
 // show login form
-app.get("/login", function(req, res){
+router.get("/login", function(req, res){
    res.render("blogs/login"); 
 });
 // handling login logic
-app.post("/login", passport.authenticate("local", 
+router.post("/login", passport.authenticate("local", 
     {
         successRedirect: "/blogs",
         failureRedirect: "/login"
@@ -34,7 +39,7 @@ app.post("/login", passport.authenticate("local",
 });
 
 // logout route
-app.get("/logout", function(req, res){
+router.get("/logout", function(req, res){
    req.logout();
    res.redirect("/blogs");
 });
@@ -45,3 +50,5 @@ function isLoggedIn(req, res, next){
     }
     res.redirect("/login");
 }
+
+module.exports= router;
