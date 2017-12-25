@@ -22,6 +22,7 @@ mongoose.connect(url);
 
 
 
+
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
     secret: "Subha Mishra",
@@ -35,7 +36,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
+app.use(function(req,res,next){
+    res.locals.currentUser=req.user,
+    next();
+});
 
 // Routes
 
@@ -76,7 +80,7 @@ app.get("/blogs", function(req, res){
        if(err){
            console.log(err);
        } else {
-          res.render("blogs/index",{blogs:blogs});
+          res.render("blogs/index",{blogs:blogs, currentUser:req.user});
        }
     });
 });
@@ -100,7 +104,7 @@ app.get("/blogs/new",function(req,res){
 //     });
 // });
 
-app.get("/blogs/:id", function(req, res){
+app.get("/blogs/:id",function(req, res){
     //find the blog with provided ID
     Blog.findById(req.params.id).populate("comments").exec(function(err, foundBlog){
         if(err){
@@ -168,7 +172,7 @@ function isLoggedIn(req, res, next){
 
 
 
-app.get("/blogs/:id/comments/new",function(req,res){
+app.get("/blogs/:id/comments/new",isLoggedIn,function(req,res){
     Blog.findById(req.params.id,function(err,blog){
         if(err){
             console.log(err);
@@ -180,7 +184,7 @@ app.get("/blogs/:id/comments/new",function(req,res){
 
 
 
-app.post("/blogs/:id/comments", function(req, res){
+app.post("/blogs/:id/comments",isLoggedIn,function(req, res){
    //lookup blog using ID
    Blog.findById(req.params.id, function(err, blog){
        if(err){
