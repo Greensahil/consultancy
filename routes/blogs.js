@@ -75,6 +75,26 @@ router.get("/:id",function(req, res){
 });
 
 
+//EDIT blog route
+router.get("/:id/edit",function(req,res){
+    Blog.findById(req.params.id,function(err,foundBlog){
+        if(err){
+            res.redirect("/blogs");
+        }
+        else{
+            
+        }
+         res.render("blogs/edit",{blog:foundBlog});
+    });
+    
+    
+
+});
+
+
+
+//UPDATE blog route
+
 //Middleware
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
