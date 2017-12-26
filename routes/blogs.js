@@ -82,7 +82,6 @@ router.get("/:id/edit",function(req,res){
             res.redirect("/blogs");
         }
         else{
-            
         }
          res.render("blogs/edit",{blog:foundBlog});
     });
@@ -91,18 +90,19 @@ router.get("/:id/edit",function(req,res){
 
 });
 
-router.put("/:id/edit",function(req,res){
+router.put("/:id",function(req,res){
     Blog.findByIdAndUpdate(req.params.id,req.body.blog,function(err,updatedBlog){
         if(err){
             res.redirect("/blogs");
         }
         else{
-            res.redirect("/blogs"+req.params.id);
+            res.redirect("/blogs/"+req.params.id);
         }
         
     });
     
 });
+
 
 
 
