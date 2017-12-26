@@ -1,11 +1,11 @@
 var express=require("express");
-var router=express.Router();
+var router=express.Router({mergeParams:true});
 var Blog=require("../models/blog");
 var Comment=require("../models/comment");
 
 
-// COMMENTS ROUTES
-router.get("/blogs/:id/comments/new",isLoggedIn,function(req,res){
+//New COMMENTS form ROUTES
+router.get("/new",isLoggedIn,function(req,res){
     Blog.findById(req.params.id,function(err,blog){
         if(err){
             console.log(err);
@@ -15,9 +15,9 @@ router.get("/blogs/:id/comments/new",isLoggedIn,function(req,res){
 });
 
 
+//Create new comment route
 
-
-router.post("/blogs/:id/comments",isLoggedIn,function(req, res){
+router.post("/",isLoggedIn,function(req, res){
    //lookup blog using ID
    Blog.findById(req.params.id, function(err, blog){
        if(err){
@@ -28,6 +28,11 @@ router.post("/blogs/:id/comments",isLoggedIn,function(req, res){
            if(err){
                console.log(err);
            } else {
+               //add username and id to comment
+               comment.author.username=req.user.username;
+               comment.author.id=req.user._id;
+               //save comment
+               comment.save()
                blog.comments.push(comment);
                blog.save();
                res.redirect('/blogs/' + blog._id);
@@ -38,6 +43,8 @@ router.post("/blogs/:id/comments",isLoggedIn,function(req, res){
  
 });
 
+
+//Middleware
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
         return next();

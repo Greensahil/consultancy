@@ -4,7 +4,7 @@ var Blog=require("../models/blog");
 
 
 //INDEX - show all blogs
-router.get("/blogs", function(req, res){
+router.get("/", function(req, res){
     // Get all blogs from DB
     Blog.find({}, function(err, blogs){
        if(err){
@@ -15,7 +15,7 @@ router.get("/blogs", function(req, res){
     });
 });
 //CREATE - add new database to DB
-router.post("/blogs", function(req, res){
+router.post("/", function(req, res){
     // get data from form and add to blogs array
     var name = req.body.name;
     var image = req.body.image;
@@ -37,8 +37,8 @@ router.post("/blogs", function(req, res){
 
 
 
-router.get("/blogs/new",function(req,res){
-    res.render('new.ejs');
+router.get("/new",function(req,res){
+    res.render('blogs/new');
 
 });
 
@@ -56,7 +56,7 @@ router.get("/blogs/new",function(req,res){
 //     });
 // });
 
-router.get("/blogs/:id",function(req, res){
+router.get("/:id",function(req, res){
     //find the blog with provided ID
     Blog.findById(req.params.id).populate("comments").exec(function(err, foundBlog){
         if(err){

@@ -16,7 +16,7 @@ var express         =   require('express'),
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');
 app.use(express.static(__dirname + "/public"));
-seedDB();
+// seedDB(); //Seed the database
 
 var url = process.env.DATABASEURL || "mongodb://localhost/consultancy";
 mongoose.connect(url);
@@ -45,8 +45,8 @@ app.use(function(req,res,next){
 });
 
 app.use(indexRoutes);
-app.use(blogRoutes);
-app.use(commentRoutes);
+app.use("/blogs",blogRoutes);
+app.use("/blogs/:id/comments",commentRoutes);
 
 
 
