@@ -2,6 +2,7 @@ var express         =   require('express'),
     app             =   express(),
     passport        =   require('passport'),
     LocalStrategy   =   require('passport-local'),
+    methodOverride  =   require("method-override"),
     mongoose        =   require("mongoose"),
     bodyParser      =   require('body-parser'),
     Blog            =   require('./models/blog'),
@@ -12,10 +13,11 @@ var express         =   require('express'),
     commentRoutes   =   require("./routes/comments"),
     indexRoutes      =  require("./routes/index");
     
-
+app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');
 app.use(express.static(__dirname + "/public"));
+
 // seedDB(); //Seed the database
 
 var url = process.env.DATABASEURL || "mongodb://localhost/consultancy";
