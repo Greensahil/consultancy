@@ -91,9 +91,27 @@ router.get("/:id/edit",function(req,res){
 
 });
 
+router.put("/:id/edit",function(req,res){
+    Blog.findByIdAndUpdate(req.params.id,req.body.blog,function(err,updatedBlog){
+        if(err){
+            res.redirect("/blogs");
+        }
+        else{
+            res.redirect("/blogs"+req.params.id);
+        }
+        
+    });
+    
+});
+
 
 
 //UPDATE blog route
+
+
+
+
+
 
 //Middleware
 function isLoggedIn(req, res, next){
