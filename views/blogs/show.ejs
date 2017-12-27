@@ -20,6 +20,9 @@
                         Submitted by <e><%=blog.author.username %></e>
                     </p>
                     <a class="btn btn-warning" href="/blogs/<%=blog._id%>/edit">Edit</a>
+                    <form action="/blogs/<%=blog._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
             <div class="card card-body bg-light">
