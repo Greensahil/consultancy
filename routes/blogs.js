@@ -67,7 +67,6 @@ router.get("/:id",function(req, res){
         if(err){
             console.log(err);
         } else {
-            console.log(foundBlog);
             //render show template with that blog
             res.render("blogs/show", {blog: foundBlog});
         }
@@ -90,6 +89,13 @@ router.get("/:id/edit",function(req,res){
 
 });
 
+
+
+
+
+
+//UPDATE blog route
+
 router.put("/:id",function(req,res){
     Blog.findByIdAndUpdate(req.params.id,req.body.blog,function(err,updatedBlog){
         if(err){
@@ -104,11 +110,16 @@ router.put("/:id",function(req,res){
 });
 
 
-
-
-//UPDATE blog route
-
-
+//DESTROY route
+router.delete(":/id",function(req,res){
+    Blog.findByIdAndRemove(req.params.id,function(err){
+        if(err){
+            res.redirect("/blogs");
+        }else
+            res.redirect("/blogs");
+        
+    });
+});
 
 
 
