@@ -111,7 +111,7 @@ router.put("/:id",function(req,res){
 
 
 //DESTROY route
-router.delete(":/id",function(req,res){
+router.delete("/:id",function(req,res){
     Blog.findByIdAndRemove(req.params.id,function(err){
         if(err){
             res.redirect("/blogs");
