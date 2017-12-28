@@ -76,14 +76,27 @@ router.get("/:id",function(req, res){
 
 //EDIT blog route
 router.get("/:id/edit",function(req,res){
-    Blog.findById(req.params.id,function(err,foundBlog){
+    //Checking is the user is logged in
+     if (req.isAuthenticated()){
+        Blog.findById(req.params.id,function(err,foundBlog){
         if(err){
             res.redirect("/blogs");
         }
         else{
+            //Checking if the user owns the blog
+            if(foundBlog.author.id.equals(req.user._id)){
+                res.render("blogs/edit",{blog:foundBlog});
+            }
+            else{
+                 res.send("You do not have permission to do that")
+            }
+            
         }
          res.render("blogs/edit",{blog:foundBlog});
     });
+         
+     }
+
     
     
 
@@ -111,7 +124,7 @@ router.put("/:id",function(req,res){
 
 
 //DESTROY route
-router.delete("/:id",function(req,res){
+router.delete(":/id",function(req,res){
     Blog.findByIdAndRemove(req.params.id,function(err){
         if(err){
             res.redirect("/blogs");
