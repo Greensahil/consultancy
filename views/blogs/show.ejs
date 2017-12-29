@@ -19,10 +19,14 @@
                     <p>
                         Submitted by <e><%=blog.author.username %></e>
                     </p>
+                    <% if(currentUser && blog.author.id.equals(currentUser._id)){ %>
                     <a class="btn btn-warning" href="/blogs/<%=blog._id%>/edit">Edit</a>
                     <form id="delete-form" action="/blogs/<%=blog._id %>?_method=DELETE" method="POST">
                         <button class="btn btn-danger">Delete</button>
                     </form>
+                    <% } %>
+                    
+
                 </div>
             </div>
             <div class="card card-body bg-light">
@@ -44,13 +48,4 @@
         </div>
     </div>
 </div>
-
-
-
-
-
 <% include ../partials/footer %>
-
-
-
-
