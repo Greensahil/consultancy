@@ -44,7 +44,7 @@ router.post("/",isLoggedIn,function(req, res){
 });
 
 //Comment Edit route
-router.get("/:comment_id/edit",function(req,res){
+router.get("/:comment_id/edit",checkCommentOwnership,function(req,res){
     Comment.findById(req.params.comment_id,function(err,foundComment){
         if(err){
             res.redirect("back");
@@ -55,21 +55,43 @@ router.get("/:comment_id/edit",function(req,res){
 });
 
 //Comment Update
-router.put("/:comment_id",function(req,res){
+router.put("/:comment_id",checkCommentOwnership,function(req,res){
     Comment.findByIdAndUpdate(req.params.comment_id,req.body.comment,function(err,updatedComment){
         if(err){
             res.redirect("back");
         }else{
+            res.redirect("/blogs/" + req.params.id);
+        }
+        
+        
+        
+    });
+    
+    
+    
+});
+
+
+//Delete route
+router.delete("/:comment_id",checkCommentOwnership,function(req,res){
+    Comment.findByIdAndRemove(req.params.comment_id,function(err){
+        if(err){
+            res.redirect("back");
+        }
+        else{
             res.redirect("/blogs/"+req.params.id);
         }
         
         
         
-    })
+        
+    });
     
     
     
-})
+});
+
+
 
 
 
@@ -82,5 +104,40 @@ function isLoggedIn(req, res, next){
     res.redirect("/login");
 }
     
+function checkCommentOwnership(req,res,next){
+     if (req.isAuthenticated()){
+        Comment.findById(req.params.comment_id,function(err,foundComment){
+        if(err){
+            //This will redirect back to show page
+            res.redirect("back");
+        }
+        else{
+            //Checking if the user owns the comment
+            if(foundComment.author.id.equals(req.user._id)){
+                next();
+            }
+            else{
+                 res.redirect("back")
+            }
+            
+        }
+         
+    });
+         
+     }else{
+         
+         res.redirect("back")
+         
+         
+     }
+            
+            
+
+}
+
+
+
+
+
 
 module.exports= router;
