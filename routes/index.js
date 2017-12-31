@@ -28,7 +28,7 @@ router.post("/register", function(req, res){
 
 // show login form
 router.get("/login", function(req, res){
-   res.render("blogs/login"); 
+    res.render("blogs/login",{message:req.flash("error")}); 
 });
 // handling login logic
 router.post("/login", passport.authenticate("local", 

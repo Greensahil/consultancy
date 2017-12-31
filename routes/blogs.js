@@ -1,163 +1,94 @@
-var express=require("express");
-var router=express.Router();
-var Blog=require("../models/blog");
+var express = require("express");
+var router  = express.Router();
+var Blog = require("../models/blog");
+var middleware = require("../middleware");
 
 
 //INDEX - show all blogs
 router.get("/", function(req, res){
     // Get all blogs from DB
-    Blog.find({}, function(err, blogs){
+    Blog.find({}, function(err, allblogs){
        if(err){
            console.log(err);
        } else {
-          res.render("blogs/index",{blogs:blogs, currentUser:req.user});
+          res.render("blogs/index",{blogs:allblogs});
        }
     });
 });
-//CREATE - add new database to DB
-router.post("/",isLoggedIn,function(req, res){
+
+//CREATE - add new blog to DB
+router.post("/", middleware.isLoggedIn, function(req, res){
     // get data from form and add to blogs array
     var name = req.body.name;
     var image = req.body.image;
     var desc = req.body.description;
-     var author={
-        id:req.user._id,
-        username:req.user.username
-    };
-    var newBlog = {name: name, image: image, description: desc,author};
+    var author = {
+        id: req.user._id,
+        username: req.user.username
+    }
+    var newblog = {name: name, image: image, description: desc, author:author}
     // Create a new blog and save to DB
-    Blog.create(newBlog, function(err, newlyCreated){
-        
+    Blog.create(newblog, function(err, newlyCreated){
         if(err){
             console.log(err);
         } else {
             //redirect back to blogs page
+            console.log(newlyCreated);
             res.redirect("/blogs");
         }
     });
 });
 
-
-
-
-
-
-router.get("/new",isLoggedIn,function(req,res){
-    res.render('blogs/new');
-
+//NEW - show form to create new blog
+router.get("/new", middleware.isLoggedIn, function(req, res){
+   res.render("blogs/new"); 
 });
 
 // SHOW - shows more info about one blog
-// router.get("/blogs/:id", function(req, res){
-//     //find the blog with provided ID
-//     Blog.findById(req.params.id).populate("comments").exec(function(err, foundBlog){
-//         if(err){
-//             console.log(err);
-//         } else {
-//             console.log('foundBlog')
-//             //render show template with that blog
-//             res.render("show", {blog: foundBlog});
-//         }
-//     });
-// });
-
-router.get("/:id",function(req, res){
+router.get("/:id", function(req, res){
     //find the blog with provided ID
-    Blog.findById(req.params.id).populate("comments").exec(function(err, foundBlog){
+    Blog.findById(req.params.id).populate("comments").exec(function(err, foundblog){
         if(err){
             console.log(err);
         } else {
+            console.log(foundblog)
             //render show template with that blog
-            res.render("blogs/show", {blog: foundBlog});
+            res.render("blogs/show", {blog: foundblog});
         }
     });
 });
 
-
-//EDIT blog route
-router.get("/:id/edit",checkBlogOwnership,function(req,res){
-    Blog.findById(req.params.id,function(err,foundBlog){
-         res.render("blogs/edit",{blog:foundBlog});
-});
-});
-
-
-
-
-
-
-//UPDATE blog route
-
-router.put("/:id",checkBlogOwnership,function(req,res){
-    Blog.findByIdAndUpdate(req.params.id,req.body.blog,function(err,updatedBlog){
-        if(err){
-            res.redirect("/blogs");
-        }
-        else{
-            res.redirect("/blogs/"+req.params.id);
-        }
-        
-    });
-    
-});
-
-
-//DESTROY route
-router.delete("/:id",checkBlogOwnership,function(req,res){
-    Blog.findByIdAndRemove(req.params.id,function(err){
-        if(err){
-            res.redirect("/blogs");
-        }else
-            res.redirect("/blogs");
-        
+// EDIT blog ROUTE
+router.get("/:id/edit", middleware.checkblogOwnership, function(req, res){
+    Blog.findById(req.params.id, function(err, foundblog){
+        res.render("blogs/edit", {blog: foundblog});
     });
 });
 
-
-
-
-//Middleware
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
-
-
-function checkBlogOwnership(req,res,next){
-     if (req.isAuthenticated()){
-        Blog.findById(req.params.id,function(err,foundBlog){
-        if(err){
-            //This will redirect back to show page
-            res.redirect("back");
-        }
-        else{
-            //Checking if the user owns the blog
-            if(foundBlog.author.id.equals(req.user._id)){
-                next();
-            }
-            else{
-                 res.redirect("back")
-            }
-            
-        }
-         
+// UPDATE blog ROUTE
+router.put("/:id",middleware.checkblogOwnership, function(req, res){
+    // find and update the correct blog
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedblog){
+       if(err){
+           res.redirect("/blogs");
+       } else {
+           //redirect somewhere(show page)
+           res.redirect("/blogs/" + req.params.id);
+       }
     });
-         
-     }else{
-         
-         res.redirect("back")
-         
-         
-     }
-            
-            
+});
 
-}
-
-
-
+// DESTROY blog ROUTE
+router.delete("/:id",middleware.checkblogOwnership, function(req, res){
+   Blog.findByIdAndRemove(req.params.id, function(err){
+      if(err){
+          res.redirect("/blogs");
+      } else {
+          res.redirect("/blogs");
+      }
+   });
+});
 
 
-module.exports= router;
+module.exports = router;
+

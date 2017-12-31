@@ -3,6 +3,7 @@ var express         =   require('express'),
     passport        =   require('passport'),
     LocalStrategy   =   require('passport-local'),
     methodOverride  =   require("method-override"),
+    flash           =   require("connect-flash"),
     mongoose        =   require("mongoose"),
     bodyParser      =   require('body-parser'),
     Blog            =   require('./models/blog'),
@@ -11,12 +12,13 @@ var express         =   require('express'),
     seedDB          =   require("./seeds"),
     blogRoutes      =   require("./routes/blogs"),
     commentRoutes   =   require("./routes/comments"),
-    indexRoutes      =  require("./routes/index");
+    indexRoutes     =   require("./routes/index");
     
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');
 app.use(express.static(__dirname + "/public"));
+app.use(flash());
 
 // seedDB(); //Seed the database
 
@@ -43,6 +45,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req,res,next){
     res.locals.currentUser=req.user,
+    res.locals.message=req.flasg("error");
     next();
 });
 
