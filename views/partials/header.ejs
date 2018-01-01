@@ -41,7 +41,9 @@ body {
 	border-color:#FFFFFF;
 	padding-bottom:0px;
 }
-
+.alert{
+    margin-top:6px;
+}
 .nav-username{
     text-transform:capitalize;
 }
@@ -153,6 +155,15 @@ p{
             </div>
         </div>
     </nav>
-    
-<h1><%=message%></h1> 
-        
+ <div class="container">
+     <% if(error && error.length>0){ %>
+    <div class="alert alert-danger" role="alert">
+          <%=error%>
+    </div>
+    <% } %>
+     <% if(success && success.length>0){ %>
+        <div class="alert alert-success" role="alert">
+          <%=success%>
+    </div>
+    <% } %>
+</div>

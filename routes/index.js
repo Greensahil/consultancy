@@ -5,8 +5,8 @@ var passport=require("passport");
 
 
 router.get('/',function(req,res){
-    res.redirect('/blogs')
-})
+    res.redirect('/blogs');
+});
 
 // show register form
 router.get("/register", function(req, res){
@@ -17,10 +17,11 @@ router.post("/register", function(req, res){
     var newUser = new User({username: req.body.username});
     User.register(newUser, req.body.password, function(err, user){
         if(err){
-            console.log(err);
+            req.flash("error",err.message);
             return res.render("blogs/register");
         }
         passport.authenticate("local")(req, res, function(){
+           req.flash("success","Welcome to USVIT " + user.username);
            res.redirect("/blogs"); 
         });
     });
@@ -41,14 +42,16 @@ router.post("/login", passport.authenticate("local",
 // logout route
 router.get("/logout", function(req, res){
    req.logout();
+    req.flash("success","Logged You Out!");
    res.redirect("/blogs");
 });
 
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
+// function isLoggedIn(req, res, next){
+//     if(req.isAuthenticated()){
+//         return next();
+//     }
+//     res.redirect("/login");
+//      req.flash("error", "You need to be logged in to do that");
+// }
 
 module.exports= router;
