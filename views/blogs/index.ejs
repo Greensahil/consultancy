@@ -1,562 +1,198 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-      
-        <title>
-            Sahil
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-        <link rel="stylesheet" href="/stylesheets/main.css">
-        <link href="https://fonts.googleapis.com/css?family=Cormorant+SC" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Lora|Merriweather:400,700" rel="stylesheet">
-        <style>
-        
-           
+<% include ../partials/header %> 
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 800;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
-        /*    .carousel {*/
-        /*  width:1024px;*/
-        /*  height:300px;*/
-        /*}*/
-        
-        
-        /*body{*/
-        /*    padding-top:10px;*/
-        /*}*/
-body {
-	padding-top:45px;
+a {
+  color: #212529;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s; }
+  a:focus, a:hover {
+    color: #0085A1; }
+.caption {
+  font-size: 14px;
+  font-style: italic;
+  display: block;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px
 }
-@media screen and (max-width:768px) {
-	body {
-		padding-top:0px;
-	}
-}
-.navbar {
-	margin-bottom:0px;
-	background:#FFFFFF;
-	border-color:#FFFFFF;
-	padding-bottom:0px;
-}
-.alert{
-    margin-top:6px;
-}
-.nav-username{
-    text-transform:capitalize;
-}
+blockquote {
+  font-style: italic;
+  color: #868e96; }
+   .post-preview > a {
+  color: #212529; }
+  .post-preview > a:focus, .post-preview > a:hover {
+    text-decoration: none;
+    color: #0085A1; }
+  .post-preview > a > .post-title {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 10px; }
+  .post-preview > a > .post-subtitle {
+    font-weight: 300;
+    margin: 0 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 700px;
+   }
 
-.bg-overlay {
-	background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url("https://unsplash.imgix.net/photo-1416339442236-8ceb164046f8?q=75&fm=jpg&s=8eb83df8a744544977722717b1ea4d09");
-	background-repeat:no-repeat;
-	text-align:center;
-	background-size:cover;
-	background-position:center center;
-	color:#fff;
-	margin-top:0px;
-	height:450px;
-	padding-top:300px;
+.post-preview > .post-meta {
+  font-size: 18px;
+  font-style: italic;
+  margin-top: 0;
+  color: #868e96; }
+  .post-preview > .post-meta > a {
+    text-decoration: none;
+    color: #212529; }
+    .post-preview > .post-meta > a:focus, .post-preview > .post-meta > a:hover {
+      text-decoration: underline;
+      color: #0085A1; }
 
-}
+@media only screen and (min-width: 768px) {
+  .post-preview > a > .post-title {
+    font-size: 36px; } }
 
-div.container-fluid bg-overlay {
-	/*margin-top:250px;*/
-	text-align:center;
-}
-
-.carousel {
-	margin-top:0px;
-	border:1px solid #AAA;
-	border-bottom:3px solid #BBB;
-	margin-right:0px;
-	box-shadow:0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)
-}
-.carousel-inner>.item>img,.carousel-inner>.item>a>img {
-	width:100%;
-	height:500px;
-}
-section {
-	text-align:center;
-	background:blue;
-	color:white;
-}
-#uvit {
-	text-align:center;
-	margin-top:0px;
-}
-.blogs {
-	margin-top:30px;
-	font-family: 'Open Sans', sans-serif;
-}
-hr{
-    margin-top:30px;
-}
-
-p{
-    font-family: 'Merriweather', serif;
-    font-family: 'Lora', serif;
-}
-
-/*Login form*/
-
-/*    --------------------------------------------------
-    :: Login Section
-	-------------------------------------------------- */
-#login {
-    padding-top: 50px
-}
-.alert-success{
-	margin:auto;
-	text-align:center;
-	color:#faf9f8;
-	background-color:darkgray;
-}
-#login h1 {
-    color: #1fa67b;
-    font-size: 18px;
-    text-align: center;
-    font-weight: bold;
-    padding-bottom: 20px;
-}
-#login .form-group {
-    margin-bottom: 20px;
-}
-#login .checkbox {
-    margin-bottom: 20px;
+.floating-label-form-group {
+  font-size: 14px;
+  position: relative;
+  margin-bottom: 0;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #dee2e6; }
+  .floating-label-form-group input,
+  .floating-label-form-group textarea {
+    font-size: 1.5em;
     position: relative;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-}
-#login .checkbox.show:before {
-    content: '\e013';
-    color: #1fa67b;
-    font-size: 17px;
-    margin: 1px 0 0 3px;
-    position: absolute;
-    pointer-events: none;
-    font-family: 'Glyphicons Halflings';
-}
-#login .checkbox .character-checkbox {
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-    border-radius: 3px;
-    border: 1px solid #ccc;
+    z-index: 1;
+    padding: 0;
+    resize: none;
+    border: none;
+    border-radius: 0;
+    background: none;
+    box-shadow: none !important;
+    font-family: 'Lora', 'Times New Roman', serif; }
+    .floating-label-form-group input::-webkit-input-placeholder,
+    .floating-label-form-group textarea::-webkit-input-placeholder {
+      color: #868e96;
+      font-family: 'Lora', 'Times New Roman', serif; }
+  .floating-label-form-group label {
+    font-size: 0.85em;
+    line-height: 1.764705882em;
+    position: relative;
+    z-index: 0;
+    top: 2em;
+    display: block;
+    margin: 0;
+    -webkit-transition: top 0.3s ease, opacity 0.3s ease;
+    -moz-transition: top 0.3s ease, opacity 0.3s ease;
+    -ms-transition: top 0.3s ease, opacity 0.3s ease;
+    transition: top 0.3s ease, opacity 0.3s ease;
     vertical-align: middle;
-    display: inline-block;
-}
-#login .checkbox .label {
-    color: #6d6d6d;
-    font-size: 13px;
-    font-weight: normal;
-}
-#login .btn.btn-custom {
-    font-size: 14px;
-	margin-bottom: 20px;
-}
-#login .forget {
-    font-size: 13px;
-	text-align: center;
-	display: block;
-}
+    vertical-align: baseline;
+    opacity: 0; }
+  .floating-label-form-group .help-block {
+    margin: 15px 0; }
 
-/*    --------------------------------------------------
-	:: Inputs & Buttons
-	-------------------------------------------------- */
-.form-control {
-    color: #212121;
-}
-.btn-custom {
-    color: #fff;
-	background-color: #1fa67b;
-}
-.btn-custom:hover,
-.btn-custom:focus {
-    color: #fff;
-}
+.floating-label-form-group-with-value label {
+  top: 0;
+  opacity: 1; }
 
-/*    --------------------------------------------------
-    :: Footer
-	-------------------------------------------------- */
-#footer {
-    color: #6d6d6d;
-    font-size: 12px;
-    text-align: center;
-}
-#footer p {
-    margin-bottom: 0;
-}
-#footer a {
-    color: inherit;
-}
+.floating-label-form-group-with-focus label {
+  color: #0085A1; }
 
-.modal-header {
-    color:white;
-    padding:9px 15px;
-    border-bottom:1px solid #eee;
-    background-color: #373331;
-    -webkit-border-top-left-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    -moz-border-radius-topright: 5px;
-     border-top-left-radius: 5px;
-     border-top-right-radius: 5px;
-}
 </style>
-        
-        
-<body>
-	<!--Navabar-->
-
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand text-white" href="#">US VISA Interview Tips</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link text-white" href="/blogs">Home</a>
-                    </li>
-                    <% if(!currentUser) { %>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" data-toggle="modal" data-target="#loginModal" href="/login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" data-toggle="modal" data-target="#signupModal" href="/register">Signup</a>
-                    </li>
-                    <% } else { %>
-                    <li class="nav-item">
-                        <a class="nav-link text-white nav-username" href="#"><%=currentUser.username %></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/logout">Logout</a>
-                    </li>
-                    <% } %>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-
-<!--Login modal and form-->
-<div class="modal fade" id="loginModal" id="info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">USVIT</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
- <div class="container">
-        <form class="form-horizontal" role="form" method="POST" action="/login">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <h2>Login</h2>
-                    <hr>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="form-group has-danger">
-                        <label class="sr-only" for="email">Username</label>
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                            <input type="text" name="username" class="form-control" placeholder="username" required autofocus>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="sr-only" for="password">Password</label>
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                            <input type="password" name="password" class="form-control" placeholder="Password" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-control-feedback">
-                        <span class="text-danger align-middle">
-                        <!-- Put password error message here -->    
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6" style="padding-top: .35rem">
-                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
-                        <!--<label class="form-check-label">-->
-                        <!--    <input class="form-check-input" name="remember"-->
-                        <!--           type="checkbox" >-->
-                        <!--    <span style="padding-bottom: .15rem">Remember me</span>-->
-                        <!--</label>-->
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="padding-top: 1rem">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> Login</button>
-                    <!--<a class="btn btn-link" href="/password/reset">Forgot Your Password?</a>-->
-                </div>
-            </div>
-        </form>
-    </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--Signup-->
-
-
-<div class="modal fade" id="signupModal" id="info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">USVIT</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-  <div class="container">
-        <form class="form-horizontal" role="form" method="POST" action="/register">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <h2>Signup</h2>
-                    <hr>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="form-group has-danger">
-                        <label class="sr-only" for="email">Username</label>
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                            <input type="text" name="username" class="form-control" placeholder="username" required autofocus>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="sr-only" for="password">Password</label>
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                            <input type="password" name="password" class="form-control" placeholder="Password" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-control-feedback">
-                        <span class="text-danger align-middle">
-                        <!-- Put password error message here -->    
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6" style="padding-top: .35rem">
-                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
-                        <!--<label class="form-check-label">-->
-                        <!--    <input class="form-check-input" name="remember"-->
-                        <!--           type="checkbox" >-->
-                        <!--    <span style="padding-bottom: .15rem">Remember me</span>-->
-                        <!--</label>-->
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="padding-top: 1rem">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> Signup</button>
-                    <!--<a class="btn btn-link" href="/password/reset">Forgot Your Password?</a>-->
-                </div>
-            </div>
-        </form>
-    </div>
-    </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-
-<div class="row">
-	<div class="col-md-12 col-sm-12">
-				<div class="errorMessge"><% if(error && error.length>0){ %>
-<div class="alert alert-danger" role="alert">
-      <%=error%>
-</div>
-<% } %>
- <% if(success && success.length>0){ %>
-    <div class="alert alert-success" role="alert">
-      <%=success%>
-</div>
-<% } %></div>
-</div>
-	</div>
-
-
-
-
-
- <div class="container-fluid bg-overlay">
+<div class="container-fluid bg-overlay">
 	<div class="text-center">
 
 		<h1>UVIT</h1>
         <button type="button" class="btn btn-primary btn-lg">Get Started</button>
 	</div>
 </div>
-    
-
 <header class="jumbotron">
-     <div class="container" id="uvit">
-         <h4>What we do at UVIT</h4>
-         <p>
-          Our Prime objective is to help you meet yours goals by providing you the following tools
-          
-          </p>
-     </div>
- </header>
-<p>rajan brarla</p>
+   <div class="container" id="uvit">
+      <h4>What we do at UVIT</h4>
+      <p>
+         Our Prime objective is to help you meet yours goals by providing you the following tools
+      </p>
+   </div>
+</header>
 
 <div class="row">
-	<div class="container">
-		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-			<ol class="carousel-indicators">
-				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-			</ol>
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img class=" w-100 img-fluid" src="https://i.imgur.com/GYgOEyN.jpg" alt="First slide">
-					<div class="carousel-caption d-none d-md-block">
-						<button class="btn btn-hero btn-lg" role="button">Blogs</button>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<img class=" w-100" src="https://i.imgur.com/RgqlpVL.jpg" alt="Second slide">
-					<div class="carousel-caption d-none d-md-block">
-						<button class="btn btn-hero btn-lg" role="button">Sign up</button>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<img class="w-100" src="https://i.imgur.com/0aabvmF.jpg" alt="Third slide">
-					<div class="carousel-caption d-none d-md-block">
-						<button class="btn btn-hero btn-lg" role="button">About us</button>
-					</div>
-				</div>
-			</div>
-			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-			</a>
-		</div>
-	</div>
+   <div class="container">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+         <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+         </ol>
+         <div class="carousel-inner">
+            <div class="carousel-item active">
+               <img class=" w-100 img-fluid" src="https://i.imgur.com/GYgOEyN.jpg" alt="First slide">
+               <div class="carousel-caption d-none d-md-block">
+                  <button class="btn btn-hero btn-lg" role="button">Blogs</button>
+               </div>
+            </div>
+            <div class="carousel-item">
+               <img class=" w-100" src="https://i.imgur.com/RgqlpVL.jpg" alt="Second slide">
+               <div class="carousel-caption d-none d-md-block">
+                  <button class="btn btn-hero btn-lg" role="button">Sign up</button>
+               </div>
+            </div>
+            <div class="carousel-item">
+               <img class="w-100" src="https://i.imgur.com/0aabvmF.jpg" alt="Third slide">
+               <div class="carousel-caption d-none d-md-block">
+                  <button class="btn btn-hero btn-lg" role="button">About us</button>
+               </div>
+            </div>
+         </div>
+         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+         <span class="sr-only">Previous</span>
+         </a>
+         <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+         <span class="sr-only">Next</span>
+         </a>
+      </div>
+   </div>
 </div>
-
-
 <hr>
-
 <!--BLOG POSTS-->
 
-<div class="container blogs">
-	<div class="col-md-12">
-	    <h1>Blogs</h1>
-		<h2>5 basic tips for Interview</h2>
-		<p>
-			'You ought to be ashamed of yourself for asking such a simple question,' added the Gryphon; and then they both sat silent and looked at poor Alice, who felt ready to sink into the earth. At last the Gryphon said to the Mock Turtle, 'Drive on, old fellow! Don't be all day about it!' and he went on in these words: 'Yes, we went to school in the sea, though you mayn't believe it—' 'I never said I didn't!' interrupted Alice. 'You did,' said the Mock Turtle.
-		</p>
-		<div>
-			<span class="badge">Posted 2012-08-02 20:47:04</span>
-			<div class="pull-right">
-				<span class="label label-default">alice</span><span class="label label-primary">story</span><span class="label label-success">blog</span><span class="label label-info">personal</span><span class="label label-warning">Warning</span>
-				<span class="label label-danger">Danger</span>
-			</div>
-		</div>
-		<hr>
-		<h2>VISA guides</h2>
-		<p>
-			'I am bound to Tahiti for more men.' 'Very good. Let me board you a moment—I come in peace.' With that he leaped from the canoe, swam to the boat; and climbing the gunwale, stood face to face with the captain. 'Cross your arms, sir; throw back your head. Now, repeat after me. As soon as Steelkilt leaves me, I swear to beach this boat on yonder island, and remain there six days. If I do not, may lightning strike me!'A pretty scholar,' laughed the Lakeman. 'Adios, Senor!' and leaping into the sea, he swam back to his comrades.
-		</p>
-		<div>
-			<span class="badge">Posted 2012-08-02 20:47:04</span>
-			<div class="pull-right">
-				<span class="label label-default">alice</span><span class="label label-primary">story</span><span class="label label-success">blog</span><span class="label label-info">personal</span><span class="label label-warning">Warning</span>
-				<span class="label label-danger">Danger</span>
-			</div>
-		</div>
-		<hr>
-	</div>
-</div>
 
+<%blogs.forEach(function(blog){%>
 <div class="container">
-	<% blogs.forEach(function(blog){ %>
-	
-	<p> Change format Ruz<</p>
-            <div class="col-md-3 col-sm-6">
-            	<div class="caption">
-                       <h4><%= blog.name %></h4>
-                   </div>
-                <div class="thumbnail">
-                	
-                   <img src="<%= blog.image %>">
-                   
-                   <p><%=blog.description %></p>
-                   <p>
-                       <a href="/blogs/<%= blog._id %>" class="btn btn-primary">More Info</a>
-                   </p>
-                </div>
-            </div>
-        <% }); %>
-    </div>
-</div>
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-preview">
+            <a href="/blogs/<%=blog._id%>">
+              <h2 class="post-title">
+                <%=blog.name%>
+              </h2>
+           
+              <h3 class="post-subtitle">
+                <%=blog.description%>
+              </h3>
+            </a>
+            <p class="post-meta">Posted by
+              <a href="#"><%=blog.author.username%></a>
+              on <%=blog.created%></p>
+          </div>
+          <hr>
+   </div>
+   
+<% })%>
 
-
-	
-	
-	
-	
-	
-	
-</div>
-
-
+</div>          
 
 <% include ../partials/footer.ejs %>

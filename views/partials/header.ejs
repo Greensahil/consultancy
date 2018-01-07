@@ -48,6 +48,7 @@ body {
     text-transform:capitalize;
 }
 
+
 .bg-overlay {
 	background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url("https://unsplash.imgix.net/photo-1416339442236-8ceb164046f8?q=75&fm=jpg&s=8eb83df8a744544977722717b1ea4d09");
 	background-repeat:no-repeat;
@@ -58,12 +59,13 @@ body {
 	margin-top:0px;
 	height:450px;
 	padding-top:300px;
-
 }
+
 div.container-fluid bg-overlay {
 	/*margin-top:250px;*/
 	text-align:center;
 }
+
 .carousel {
 	margin-top:0px;
 	border:1px solid #AAA;
@@ -77,7 +79,7 @@ div.container-fluid bg-overlay {
 }
 section {
 	text-align:center;
-	background:blue;
+	background:#0c0407bf;
 	color:white;
 }
 #uvit {
@@ -96,6 +98,7 @@ p{
     font-family: 'Merriweather', serif;
     font-family: 'Lora', serif;
 }
+
 /*Login form*/
 
 /*    --------------------------------------------------
@@ -103,6 +106,13 @@ p{
 	-------------------------------------------------- */
 #login {
     padding-top: 50px
+}
+.alert-success{
+	margin-top:0px;
+	margin-bottom:0px;
+	text-align:center;
+	color:#faf9f8;
+	background-color:darkgray;
 }
 #login h1 {
     color: #1fa67b;
@@ -198,6 +208,36 @@ p{
      border-top-left-radius: 5px;
      border-top-right-radius: 5px;
 }
+
+
+
+
+
+
+
+
+/*@media (max-width: 768px) {*/
+
+/*     .col-lg-4 {*/
+/*        margin-top: 20px;*/
+/*    }*/
+/*}*/
+/*BLOG POSTS*/
+.bg-image-full {
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+
+
+/*.masthead-size{*/
+/*    max-height:300px;    */
+/*}*/
+
+    
 </style>
         
         
@@ -206,7 +246,7 @@ p{
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand text-white" href="#">US VISA Interview Tips</a>
+            <a class="navbar-brand text-white" href="#">Blogs</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -402,15 +442,16 @@ p{
 </div>
 </div>
 
- <div class="container">
-     <% if(error && error.length>0){ %>
-    <div class="alert alert-danger" role="alert">
-          <%=error%>
-    </div>
-    <% } %>
-     <% if(success && success.length>0){ %>
-        <div class="alert alert-success" role="alert">
-          <%=success%>
-    </div>
-    <% } %>
+
+<div class="errorMessge"><% if(error && error.length>0){ %>
+<div class="alert alert-danger" role="alert">
+      <%=error%>
 </div>
+<% } %>
+ <% if(success && success.length>0){ %>
+    <div class="alert alert-success" role="alert">
+      <%=success%>
+</div>
+<% } %></div>
+</div>
+	</div>

@@ -6,6 +6,7 @@ var mongoose = require("mongoose");
 var blogSchema= new mongoose.Schema({
     name:String,
     image:String,
+    subdescription:String,
     description:String,
     created:{type:Date,default:Date.now},
     author:{
