@@ -1,6 +1,6 @@
 <% include ../partials/header %>
-<div class="container">
-    <div class="row">
+
+
         <h1 style="text-align: center">Create a New Blog</h1>
         <div style="width: 30%; margin: 25px auto;">
             <form action="/blogs" method="POST">
@@ -14,15 +14,69 @@
                     <input class="form-control" type="text" name="subdescription" placeholder="Sub header">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="description" placeholder="description">
+                    <textarea id="mytextarea" class="form-control" name="description" placeholder="description"></textarea>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-lg btn-primary btn-block">Submit!</button>
                 </div>
             </form>
             <a href="/blogs">Go Back</a>
-        </div>
-    </div>
-</div>
+        
+
+
+
+<!--<div class="container">-->
+<!--	<div class="row">-->
+	    
+<!--	    <div class="col-md-8 col-md-offset-2">-->
+	        
+<!--    		<h1>Create post</h1>-->
+    		
+<!--    		<form action="/blogs" method="POST">-->
+<!--    		  <div class="form-group">-->
+<!--    		        <label for="title">Title <span class="require">*</span></label>-->
+<!--    		        <input type="text" name="name" placeholder="name">-->
+<!--    		    </div>-->
+<!--    		    <div class="form-group has-error">-->
+<!--    		        <label for="slug">Slug <span class="require">*</span> <small>(This field use in url path.)</small></label>-->
+<!--    		        <input type="text" class="form-control" name="slug" />-->
+<!--    		        <span class="help-block">Field not entered!</span>-->
+<!--    		    </div>-->
+    		    
+ 
+    		    
+<!--    		    <div class="form-group">-->
+<!--    		        <label for="description">Description</label>-->
+<!--    		        <textarea rows="5" class="form-control" name="description" ></textarea>-->
+<!--    		    </div>-->
+    		    
+<!--    		    <div class="form-group">-->
+<!--    		        <p><span class="require">*</span> - required fields</p>-->
+<!--    		    </div>-->
+    		    
+<!--    		    <div class="form-group">-->
+<!--    		        <button type="submit" class="btn btn-primary">-->
+<!--    		            Create-->
+<!--    		        </button>-->
+<!--    		        <button class="btn btn-default">-->
+<!--    		            Cancel-->
+<!--    		        </button>-->
+<!--    		    </div>-->
+    		    
+<!--    		</form>-->
+<!--		</div>-->
+		
+<!--	</div>-->
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script type="text/javascript">
+  tinymce.init({
+    selector: '#mytextarea'
+  });
+  
+  $('form').bind('form-pre-serialize', function(e) {
+    tinyMCE.triggerSave();
+});
+  
+  </script>
 <% include ../partials/footer %>
 

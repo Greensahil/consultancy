@@ -1,5 +1,5 @@
+<% include ../partials/header %>
 <style>
-
 .bg-img {
 	background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url("<%=blog.image%>");
 	background-repeat:no-repeat;
@@ -35,7 +35,8 @@ a {
 
 
 </style>
-<% include ../partials/header %>
+
+
 
 
 
@@ -52,7 +53,6 @@ a {
       <div class="container">
         <h1><%=blog.name%></h1>
         <p class="lead"><%=blog.subdescription%></p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
       </div>
     </section>
     
@@ -72,33 +72,12 @@ a {
 
             <h2 class="section-heading">The Final Frontier</h2>
 
-            <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
-
-            <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
-
-            <blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote>
-
-            <p>Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.</p>
-
-            <h2 class="section-heading">Reaching for the Stars</h2>
-
-            <p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.</p>
-
-            <a href="#">
-              <img class="img-fluid" src="img/post-sample-image.jpg" alt="">
-            </a>
-            <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
-
-            <p>Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.</p>
-
-            <p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.</p>
-
-            <p>Placeholder text by
-              <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by
-              <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p>
+                 <%-blog.description%>
           </div>
         </div>
       </div>
     </article>
-
+<form action="/blogs/<%=blog._id %>?_method=DELETE" method="POST">
+   <button class="btn btn-danger">Delete</button>
+</form>
 <% include ../partials/footer %>

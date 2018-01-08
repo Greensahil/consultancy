@@ -1,5 +1,6 @@
 <% include ../partials/header %> 
 <style>
+
 h1,
 h2,
 h3,
@@ -109,6 +110,9 @@ blockquote {
 
 .floating-label-form-group-with-focus label {
   color: #0085A1; }
+  .post-preview>a>.post-subtitle {
+    font-weight: 300;
+    margin: 0 0 10px;
 
 </style>
 <div class="container-fluid bg-overlay">
@@ -181,18 +185,20 @@ blockquote {
               </h2>
            
               <h3 class="post-subtitle">
-                <%=blog.description%>
+                <%=blog.subdescription%>
               </h3>
             </a>
             <p class="post-meta">Posted by
               <a href="#"><%=blog.author.username%></a>
-              on <%=blog.created%></p>
+              on <%=blog.created.toDateString()%></p>
           </div>
           <hr>
    </div>
-   
+
 <% })%>
 
 </div>          
 
-<% include ../partials/footer.ejs %>
+<center><p class="btn btn-success">READ MORE</p></center>
+<hr>
+<% include ../partials/footer %>
