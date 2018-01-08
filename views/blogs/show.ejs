@@ -73,11 +73,17 @@ a {
             <h2 class="section-heading">The Final Frontier</h2>
 
                  <%-blog.description%>
+                 
+                  <p><% if(currentUser && blog.author.id.equals(currentUser._id)){ %>
+                    <a class="btn btn-warning" href="/blogs/<%=blog._id%>/edit">Edit</a>
+                    <form id="delete-form" action="/blogs/<%=blog._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                    <% } %></p>
+    </article>
           </div>
         </div>
       </div>
-    </article>
-<form action="/blogs/<%=blog._id %>?_method=DELETE" method="POST">
-   <button class="btn btn-danger">Delete</button>
-</form>
+
+
 <% include ../partials/footer %>
