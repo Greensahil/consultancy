@@ -112,8 +112,13 @@ blockquote {
   color: #0085A1; }
   .post-preview>a>.post-subtitle {
     font-weight: 300;
-    margin: 0 0 10px;
-
+    margin: 0 0 10px;}
+#content {
+  overflow: hidden;
+  height: 30em;
+  /*line-height: 10.2em;*/
+  /*width: 200px;*/
+}
 </style>
 <div class="container-fluid bg-overlay">
 	<div class="text-center">
@@ -173,8 +178,8 @@ blockquote {
 <hr>
 <!--BLOG POSTS-->
 
-
-<%blogs.forEach(function(blog){%>
+<div id="content">
+  <%blogs.forEach(function(blog){%>
 <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
@@ -198,9 +203,16 @@ blockquote {
     </div>
 
 <% })%>
+</div>
+
 
          
 
-<center><p class="btn btn-success">READ MORE</p></center>
-
+<center><p class="btn btn-success"id="listen">READ MORE</p></center>
+<script>
+  document.querySelector('#listen').addEventListener('click', function() {
+  document.querySelector('#content').style.height= 'auto';
+  this.style.display= 'none';
+});
+</script>
 <% include ../partials/footer %>
