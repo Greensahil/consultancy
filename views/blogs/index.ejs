@@ -211,8 +211,20 @@ blockquote {
 <center><p class="btn btn-success"id="listen">READ MORE</p></center>
 <script>
   document.querySelector('#listen').addEventListener('click', function() {
-  document.querySelector('#content').style.height= 'auto';
-  this.style.display= 'none';
+    var elem = $("#listen").text();
+    if(elem=="READ MORE"){
+       document.querySelector('#content').style.height= 'auto';
+       $("#listen").text("READ LESS");
+    }else{
+      
+      document.querySelector('#content').style.overflow= 'hidden';
+      document.querySelector('#content').style.height= '20em';
+      $("#listen").text("READ MORE");
+      
+    }
+ 
+  // this.style.display= 'none';
+  
 });
 </script>
 <% include ../partials/footer %>
