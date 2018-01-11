@@ -20,7 +20,7 @@ app.set('view engine','ejs');
 app.use(express.static(__dirname + "/public"));
 app.use(flash());
 
-seedDB(); //Seed the database
+// seedDB(); //Seed the database
 
 var url =process.env.DATABASEURL ||"mongodb://localhost/consultancy";
 mongoose.connect(url);

@@ -33,6 +33,7 @@ a {
   font-weight: 700;
   margin-top: 60px; }
 
+
 .vid {
     position: relative;
     padding-bottom: 56.25%;
@@ -47,6 +48,11 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+.list-group{
+  font-size:15px;
+  font-family:Lora;
 }
 </style>
 
@@ -70,20 +76,8 @@ a {
       </div>
     </section>
     
-  <article>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-                 <%-blog.description%><br>
-                  <h2 class="section-heading">Check out our video</h2>
-                 <br><br>
-                <iframe  height="300px" width="100%"
-              src="https://www.youtube.com/embed/BCIw-ZIXXa4">
-              </iframe>
-          </div>
-        </div>
-      </div>
-    </article>
+<%-blog.description%>
+      
 <form action="/blogs/<%=blog._id %>?_method=DELETE" method="POST">
    <button class="btn btn-danger">Delete</button>
 </form>
