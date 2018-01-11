@@ -80,10 +80,18 @@ a {
     </section>
     
 <%-blog.description%>
-      
-<form action="/blogs/<%=blog._id %>?_method=DELETE" method="POST">
-   <button class="btn btn-danger">Delete</button>
-</form>
+  
+<center>
+        <% if(currentUser && blog.author.id.equals(currentUser._id)){ %>
+        <a class="btn btn-secondary" href="/blogs/<%=blog._id%>/edit">Edit</a><br><br>
+        <form id="delete-form" action="/blogs/<%=blog._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-secondary">Delete</button>
+        </form>
+        <% } %>
+</center>
+
+        
+  
 <% include ../partials/footer %>
 
 
