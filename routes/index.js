@@ -31,6 +31,15 @@ router.post("/register", function(req, res){
 router.get("/login", function(req, res){
     res.render("blogs/login",{message:req.flash("error")}); 
 });
+
+
+router.get("/google", function(req, res){
+    // handle with passport
+    res.send('logging in with Google');
+});
+
+
+
 // handling login logic
 router.post("/login", passport.authenticate("local", 
     {
@@ -53,5 +62,8 @@ router.get("/logout", function(req, res){
 //     res.redirect("/login");
 //      req.flash("error", "You need to be logged in to do that");
 // }
+
+
+
 
 module.exports= router;

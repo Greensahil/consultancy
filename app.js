@@ -13,12 +13,22 @@ var express         =   require('express'),
     blogRoutes      =   require("./routes/blogs"),
     commentRoutes   =   require("./routes/comments"),
     indexRoutes     =   require("./routes/index");
+  
     
+
+
+
+
+
+
+app.use(flash()); // use connect-flash for flash messages stored in session
+
 app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');
 app.use(express.static(__dirname + "/public"));
 app.use(flash());
+
 
 // seedDB(); //Seed the database
 
@@ -51,7 +61,7 @@ app.use(function(req,res,next){
 });
 
 app.use(indexRoutes);
-app.use("/blogs",blogRoutes);
+app.use("/",blogRoutes);
 app.use("/blogs/:id/comments",commentRoutes);
 
 
