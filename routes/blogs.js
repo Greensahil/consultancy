@@ -2,6 +2,7 @@ var express = require("express");
 var router  = express.Router();
 var Blog = require("../models/blog");
 var middleware = require("../middleware");
+var passport =require("passport");
 
 
 //INDEX - show all blogs
@@ -15,6 +16,23 @@ router.get("/", function(req, res){
        }
     });
 });
+
+
+router.get("/google",passport.authenticate("google",{
+    scope:["profile"]
+    
+})
+);
+
+//callback route for google to redirect to
+router.get("/google/redirect",function(req,res){
+    res.send("You reached the callback URI")
+    
+    
+})
+
+
+
 
 //CREATE - add new blog to DB
 router.post("/", middleware.isLoggedIn, function(req, res){

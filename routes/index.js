@@ -33,10 +33,6 @@ router.get("/login", function(req, res){
 });
 
 
-router.get("/google", function(req, res){
-    // handle with passport
-    res.send('logging in with Google');
-});
 
 
 

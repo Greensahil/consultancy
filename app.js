@@ -12,7 +12,8 @@ var express         =   require('express'),
     seedDB          =   require("./seeds"),
     blogRoutes      =   require("./routes/blogs"),
     commentRoutes   =   require("./routes/comments"),
-    indexRoutes     =   require("./routes/index");
+    indexRoutes     =   require("./routes/index"),
+    passportSetup   =   require("./config/passport-setup");
   
     
 
@@ -39,7 +40,6 @@ mongoose.connect(url);
 
 
 
-
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
     secret: "Subha Mishra",
@@ -60,8 +60,8 @@ app.use(function(req,res,next){
     next();
 });
 
-app.use(indexRoutes);
-app.use("/",blogRoutes);
+app.use("/",indexRoutes);
+app.use("/blogs",blogRoutes);
 app.use("/blogs/:id/comments",commentRoutes);
 
 
