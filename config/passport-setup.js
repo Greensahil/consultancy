@@ -10,6 +10,6 @@ passport.use(
         callbackURL: '/blogs/google/redirect'
     }, function(accessToken,refreshToken,profile,done) {
         console.log("passport callback function")
-        console.log("profile")
+        console.log(profile)
     })
 );
