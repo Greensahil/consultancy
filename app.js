@@ -13,7 +13,9 @@ var express         =   require('express'),
     blogRoutes      =   require("./routes/blogs"),
     commentRoutes   =   require("./routes/comments"),
     indexRoutes     =   require("./routes/index"),
-    passportSetup   =   require("./config/passport-setup");
+    passportSetup   =   require("./config/passport-setup"),
+    keys            =   require("./config/keys"),
+    cookieSession  =    require("cookie-session");
   
     
 
@@ -28,7 +30,13 @@ app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');
 app.use(express.static(__dirname + "/public"));
-app.use(flash());
+
+
+
+app.use(cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,        //Cookie takes one day to expire
+    keys: [process.env.HASH]            //HASH is an environemnt variable
+}));
 
 
 // seedDB(); //Seed the database
@@ -40,7 +48,7 @@ mongoose.connect(url);
 
 
 
-// PASSPORT CONFIGURATION
+//PASSPORT CONFIGURATION
 app.use(require("express-session")({
     secret: "Subha Mishra",
     resave: false,
