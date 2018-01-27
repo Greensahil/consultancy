@@ -49,7 +49,7 @@ app.use(cookieSession({
 
 // seedDB(); //Seed the database
 
-var url ="mongodb://localhost/consultancy"||process.env.DATABASEURL;
+var url =process.env.DATABASEURL||"mongodb://localhost/consultancy";
 mongoose.connect(url);
 
 
