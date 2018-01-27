@@ -9,20 +9,28 @@ var express         =   require('express'),
     Blog            =   require('./models/blog'),
     User            =   require("./models/user"),
     Comment         =   require("./models/comment"),
-    seedDB          =   require("./seeds"),
-    blogRoutes      =   require("./routes/blogs"),
+    seedDB          =   require("./seeds");
+    
+    
+require('dotenv').config();     // Environment Variables
+    
+//ROUTES    
+    
+var blogRoutes      =   require("./routes/blogs"),
     commentRoutes   =   require("./routes/comments"),
     indexRoutes     =   require("./routes/index"),
     passportSetup   =   require("./config/passport-setup"),
     keys            =   require("./config/keys"),
     cookieSession  =    require("cookie-session");
-  
     
+    
+  
 
 
 
 
 
+  
 
 app.use(flash()); // use connect-flash for flash messages stored in session
 
@@ -35,7 +43,7 @@ app.use(express.static(__dirname + "/public"));
 
 app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000,        //Cookie takes one day to expire
-    keys: [process.env.HASH]            //HASH is an environemnt variable
+    keys: [process.env.HASH_KEY]            //HASH is an environemnt variable
 }));
 
 
@@ -57,6 +65,9 @@ app.use(require("express-session")({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());

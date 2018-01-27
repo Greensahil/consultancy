@@ -18,18 +18,41 @@ router.get("/", function(req, res){
 });
 
 
+//GOOGLE SIGNUP AND SIGNIN
+
 router.get("/google",passport.authenticate("google",{
     scope:["profile"]
     
 })
 );
 
+
 //callback route for google to redirect to
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-    res.send(req.user);
+  //  res.send(req.user);
+    res.redirect('/blogs/profile');
 });
 
 
+router.get("/profile",function(req,res){
+    res.redirect("/blogs");
+    
+});
+
+//FACEBOOK
+
+router.get('/facebook', passport.authenticate('facebook', { 
+      scope : ['public_profile', 'email']
+    }));
+
+router.get('/facebook/redirect', passport.authenticate('facebook'), (req, res) => {
+    // res.send(req.user);
+    res.redirect('/blogs/profile');
+});
+
+// router.get('/facebook/redirect',
+//   passport.authenticate('facebook', { successRedirect: '/blogs',
+//                                       failureRedirect: '/login' }));
 
 
 //CREATE - add new blog to DB

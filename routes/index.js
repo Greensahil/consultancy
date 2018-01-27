@@ -51,6 +51,13 @@ router.get("/logout", function(req, res){
    res.redirect("/blogs");
 });
 
+
+
+//GOOGLE SIGNUP AND SIGNIN
+
+
+
+
 // function isLoggedIn(req, res, next){
 //     if(req.isAuthenticated()){
 //         return next();

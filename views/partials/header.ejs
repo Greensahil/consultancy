@@ -280,7 +280,7 @@ footer {
                     </li>
                     <% } else { %>
                     <li class="nav-item">
-                        <a class="nav-link text-white nav-username" href="#"><%=currentUser.username %></a>
+                        <a class="nav-link text-white nav-username" href="#"><%=currentUser.username||currentUser.facebook.username||currentUser.google.username %></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="/logout">Logout</a>
