@@ -6,19 +6,9 @@ var UserSchema = new mongoose.Schema({
    local:{
     username: String,
     password: String,
+    isAdmin: {type:Boolean , default:false }
 
-},facebook:{
-    id:String,
-    username:String,
-    token:String,
-    email:String,
-    name:String
-},google:{
-    username: String,
-    password: String,
-    id:String
 }
-    
 });
 
 
